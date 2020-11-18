@@ -3,60 +3,57 @@ package com.wang.blog.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import java.util.HashMap;
-import java.util.Map;
+import javax.sql.DataSource;
 
 /**
- * @Description: druid连接池配置类
+ * @Description:
  * @Author : 王俊
  * @date :  2020/11/18
  */
 @Configuration
-@ConditionalOnClass(DruidDataSource.class)
-@ConditionalOnProperty(name = "spring.dataSource.type", havingValue = "com.alibaba.druid.pool.DruidDataSource", matchIfMissing = true)
-@Slf4j
 public class DruidDataSourceConfig {
 
-    @Value("${druidUsername}")
-    private String druidUsername;
-    @Value("${druidPassword}")
-    private String druidPassword;
-
     /**
-     * 配置Druid监控的StatViewServlet和WebStatFilter
+     *  主要实现WEB监控的配置处理
      */
     @Bean
-    public ServletRegistrationBean druidServlet(){
-        log.info("init Druid Servlet Configuration ");
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
-        servletRegistrationBean.setServlet(new StatViewServlet());
-        servletRegistrationBean.addUrlMappings("/druid/*");
-        Map<String, String> initParameters = new HashMap<String, String>();
-        initParameters.put("loginUsername", druidUsername);
-        initParameters.put("loginPassword", druidPassword);
-        initParameters.put("resetEnable", "true");
-        //下面是黑白名单，多个ip地址之间用逗号隔开
-//      initParameters.put("allow", "119.23.202.55,127.0.0.1,10.24.38.152");
-//      initParameters.put("deny", "119.23.202.55");
-        servletRegistrationBean.setInitParameters(initParameters);
-
-        return servletRegistrationBean;
+    public ServletRegistrationBean druidServlet() {
+        // 现在要进行druid监控的配置处理操作
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(
+                new StatViewServlet(), "/druid/*");
+        // 白名单,多个用逗号分割， 如果allow没有配置或者为空，则允许所有访问
+        servletRegistrationBean.addInitParameter("allow", "127.0.0.1,172.29.32.54");
+        // 黑名单,多个用逗号分割 (共同存在时，deny优先于allow)
+        servletRegistrationBean.addInitParameter("deny", "192.168.1.110");
+        // 控制台管理用户名
+        servletRegistrationBean.addInitParameter("loginUsername", "admin");
+        // 控制台管理密码
+        servletRegistrationBean.addInitParameter("loginPassword", "eju1314");
+        // 是否可以重置数据源，禁用HTML页面上的“Reset All”功能
+        servletRegistrationBean.addInitParameter("resetEnable", "false");
+        return servletRegistrationBean ;
     }
 
     @Bean
-    public FilterRegistrationBean filterRegistrationBean(){
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean() ;
         filterRegistrationBean.setFilter(new WebStatFilter());
+        //所有请求进行监控处理
         filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-        return filterRegistrationBean;
+        //添加不需要忽略的格式信息
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.css,/druid/*");
+        return filterRegistrationBean ;
     }
+
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource druidDataSource() {
+        return new DruidDataSource();
+    }
+
 }
