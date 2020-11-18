@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: mister_wang_blog
+
+  profiles:
+    active: dev
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 123456
+    url: jdbc:mysql://182.92.220.1:3306/mister_wang_blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
+    password:
+    timeout: 500ms
+
+  mvc:
+    favicon:
+      enabled: false
+
+  servlet:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+
+server:
+  port: 8081
+  # 是否开启压缩,SpringBoot默认没有启用Http包压缩功能，压缩对减少带宽和加快页面加载非常有用。
+  compression:
+    enabled: true
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count
+
+logging:
+  config: classpath:log4j2.xml
