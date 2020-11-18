@@ -1,9 +1,12 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: mister_wang_blog
-
-  profiles:
-    active: dev
+    # 是否开启压缩,SpringBoot默认没有启用Http包压缩功能，压缩对减少带宽和加快页面加载非常有用。
+    compression:
+      enabled: true
 
   datasource:
     username: root
@@ -27,7 +30,7 @@ spring:
     test-on-return: false
     # 打开PSCache，并且指定每个连接上PSCache的大小
     pool-prepared-statements: true
-    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
     max-pool-prepared-statement-per-connection-size: 20
     filters: stat,wall
     use-global-data-source-stat: true
@@ -63,6 +66,9 @@ spring:
   #将thymeleaf的默认缓存禁用，热加载生效
   thymeleaf:
     cache: false
+    prefix: classpath:/
+    suffix: .html
+    mode: HTML
 
   mvc:
     favicon:
@@ -73,21 +79,12 @@ spring:
       max-file-size: 10MB
       max-request-size: 100MB
 
-server:
-  port: 8081
-  # 是否开启压缩,SpringBoot默认没有启用Http包压缩功能，压缩对减少带宽和加快页面加载非常有用。
-  compression:
-    enabled: true
-
 pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
 
-logging:
-  level:
-    root: warn
-  config: classpath:log4j2.xml
-  pattern:
-    console: '%p%m%n'
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.blog.entity

@@ -1,4 +1,4 @@
-package com.wang.blog.config;
+package com.blog.config;
 
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.ErrorPageRegistrar;

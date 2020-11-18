@@ -1,4 +1,4 @@
-package com.wang.blog.config;
+package com.blog.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
