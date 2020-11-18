@@ -33,7 +33,7 @@ public class DruidDataSourceConfig {
         // 控制台管理用户名
         servletRegistrationBean.addInitParameter("loginUsername", "admin");
         // 控制台管理密码
-        servletRegistrationBean.addInitParameter("loginPassword", "eju1314");
+        servletRegistrationBean.addInitParameter("loginPassword", "admin");
         // 是否可以重置数据源，禁用HTML页面上的“Reset All”功能
         servletRegistrationBean.addInitParameter("resetEnable", "false");
         return servletRegistrationBean ;
