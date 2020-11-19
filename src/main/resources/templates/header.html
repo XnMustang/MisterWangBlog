@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--所有页面共有头部-->
+    <div th:fragment="header">
+        <!--PC导航栏-->
+        <nav class="nav-bar-holder">
+            <div class="nav-bar" id="nav-bar">
+                <div class="logo-box">
+                    <a href="index.html" class="blog-title ta-c"><img style="vertical-align: top;" alt="logo"
+                                                                      src="../img/mr-wang.jpg" /></a>
+                </div>
+                <div class="nb-a-holder" id="home">
+                    <a id="active" class="nb-a ta-c" href="index.html">首页</a>
+                </div>
+                <div class="nb-a-holder">
+                    <a class="nb-a ta-c" href="category.html">分类</a>
+                </div>
+                <div class="nb-a-holder">
+                    <a class="nb-a ta-c" href="tag.html">标签墙</a>
+                </div>
+                <div class="nb-a-holder">
+                    <a class="nb-a ta-c" href="archive.html">归档</a>
+                </div>
+                <div class="nb-a-holder">
+                    <a class="nb-a ta-c" href="link.html">友情链接</a>
+                </div>
+                <!--搜索框-->
+                <div id="search-nb">
+                    <span class="search-s fl">
+                        <label for="search-input"></label><input class="fl" type="text" id="search-input"
+                                                                 placeholder="请输入关键字">
+                        <a class="search-icon fl" onclick="search_by_key()" href="javascript:void(0);"></a>
+                    </span>
+                </div>
+                <div class="nb-a-holder-last">
+                    <div class="nb-a-holder-small">
+                        <a class="a-login" th:href="@{/login}">登录</a>
+                    </div>
+                    <div class="nb-a-holder-small">
+                        <a class="a-login" th:href="@{/register}">注册</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!--mobile导航栏-->
+        <nav class="mobile-nav">
+            <div class="logo-box">
+                <a href="index.html" class="blog-title ta-c">
+                    <img style="vertical-align: top;" alt="logo"
+                         src="../img/mr-wang.jpg" /></a>
+            </div>
+            <a id="mobile_cate" style="background-image: url('../img/cate.svg')" href="javascript:void(0);"></a>
+        </nav>
+        <ul id="nav-m-list">
+            <li id="cancel-li"><a class="fr" id="cancel" href="javascript:void(0);"></a></li>
+            <li id="m-img-li">
+                <img id="m-img" alt="昔年." src="../img/mr-wang.jpg">
+            </li>
+            <li>
+                <span class="search-s fl">
+                    <label for="search-input-m"></label>
+                    <input class="fl" type="text" id="search-input-m" placeholder="关键词">
+                    <a class="search-icon fl" onclick="m_search()" href="javascript:void(0);"></a>
+                </span>
+            </li>
+            <li><a class="w-h-100 fl" href="index.html">首页</a></li>
+            <li><a class="w-h-100 fl" href="login.html">登录</a></li>
+            <li><a class="w-h-100" href="register.html">注册</a></li>
+            <li><a class="w-h-100 fl" href="category.html">分类</a></li>
+            <li><a class="w-h-100 fl" href="tag.html">标签墙</a></li>
+            <li><a class="w-h-100 fl" href="archive.html">归档</a></li>
+            <li><a class="w-h-100 fl" href="link.html">友情链接</a></li>
+        </ul>
+        <div id="d-audio" class="d-audio" style="width: 150px; z-index: 99; position: fixed; bottom: 5px; left: 5px;"></div>
+    </div>
+</html>

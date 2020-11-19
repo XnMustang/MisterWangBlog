@@ -12,7 +12,6 @@ import javax.crypto.interfaces.PBEKey;
  * @date :  2020/11/19
  */
 @Controller
-@RequestMapping("/register")
 public class RegisterController {
 
     @GetMapping(value = "/register")
