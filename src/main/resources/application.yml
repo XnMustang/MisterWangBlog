@@ -66,9 +66,6 @@ spring:
   #将thymeleaf的默认缓存禁用，热加载生效
   thymeleaf:
     cache: false
-    prefix: classpath:/
-    suffix: .html
-    mode: HTML
 
   mvc:
     favicon:

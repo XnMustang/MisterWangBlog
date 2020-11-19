@@ -16,7 +16,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //配置静态资源映射
         registry.addResourceHandler("/article/**").addResourceLocations("classpath:/static/");
+        //配置静态资源文件路径
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-        registry.addResourceHandler("/template/**").addResourceLocations("classpath:/static/");
+        //配置模板页面的路径 如果配置文件中已经配置，此处就不再需要配置
+        //registry.addResourceHandler("/template/**").addResourceLocations("classpath:/static/");
     }
 }

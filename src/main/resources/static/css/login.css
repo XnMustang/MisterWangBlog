@@ -1,0 +1,90 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+#app {
+    width: 500px;
+    height: 30%;
+    margin-top: 50px;
+}
+.hr {
+    height: 2px;
+    border: none;
+    border-top: 1px solid #b5b5b5;
+}
+.modal-title {
+    padding-bottom: 30px;
+}
+.form-group {
+    padding-bottom: 10px;
+}
+.form-group .glyphicon {
+    width: 40px;
+    float: left;
+    border: 1px solid lightgray;
+    height: 42px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+.form-group .form-control{
+    height: 42px;
+    width: 400px;
+    font-size: 17px;
+}
+.form-group label {
+    font-size: 17px;
+}
+.form-group .form-check-label{
+    font-size: 14px;
+}
+button {
+    width: 80px;
+}
+.forgetPassword {
+    width: 70px;
+    height: 35px;
+    float: right;
+    margin-right: 35px;
+    margin-top: 2px;
+}
+.forgetPassword .forgetpwd {
+    font-size: 14px;
+}
+
+/*.i_love_you {*/
+/*    text-align: center;*/
+/*}*/
+/*.i_love_you h1 {*/
+/*    font-size: 200%;*/
+/*    color: #333;*/
+/*}*/
+/*.i_love_you p {*/
+/*    font-size: 14px;*/
+/*}*/
+/*.login_error{*/
+/*    margin-top: 20px;*/
+/* }*/
+/*.phoneNotExit{*/
+/*    text-align: center;*/
+/*}*/
+/*.phoneNotExitSpan{*/
+/*    padding: 6px 10px;*/
+/*    background-color: red;*/
+/*    color: white;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*.loginInput{*/
+/*    margin-bottom: 20px;*/
+/*}*/
+/*.rememberMe{*/
+/*    display: block;*/
+/*}*/
+/*!*修改密码模态框*!*/
+/*#change_password_btn{*/
+/*    margin: 10px 20px 10px auto;*/
+/*}*/
+/*#change_password_cancel_btn{*/
+/*    margin: 10px auto 10px auto;*/
+/*}*/

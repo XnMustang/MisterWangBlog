@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 | 王先生博客</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="keywords" content="博客,个人,学习,IT,生活,张海洋,程序猿,springboot,java,后端，登录">
+    <meta name="description" content="张海洋，正宗97后，爱编程。喜欢旅行、摄影、爱生活。专注于Spring,SpringBoot等后端技术探索，以及MySql,Oracle数据库开发和SSM,SSH等后端流行框架学习。">
+
+<!--    <link rel="icon" type="image/x-icon" href="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/favicon.ico">-->
+    <link href="https://lib.baomitu.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="https://lib.baomitu.com/font-awesome/5.8.0/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/css/all.css" rel="stylesheet">
+    <link href="/css/login.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://lib.baomitu.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="modal-title">
+            <h2>Welcome to Mr. Wang's blog!</h2>
+            <hr class="hr">
+        </div>
+        <form>
+            <div class="form-group">
+                <div>
+                    <div class="glyphicon glyphicon-user"></div>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="请输入你的手机号哦！">
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <div class="glyphicon glyphicon-eye-close"></div>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="这里填你记得很清楚的密码哦！">
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">记住我</label>
+            </div>
+            <button type="submit" class="btn btn-primary">登录</button>
+            <div class="forgetPassword">
+                <button type="button" class="btn btn-light">忘记密码</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
