@@ -16,10 +16,12 @@ import java.util.List;
 @Repository
 public interface IndexMapper {
 
-    @Select("select a.id,a.articleId,a.articleTitle,a.articleType,a.articleTags,a.author,\n" +
+    @Select("select a.id,a.articleId,a.articleTitle,c.categoryName,t.tagName,a.author,\n" +
             "       a.publishDate,a.articleContent,a.articleHits,a.articleComment,a.articleDigest,\n" +
-            "       a.lastArticleId,a.nextArticleId,a.gmtCreate,a.gmtModified\n" +
-            "from article As a;")
+            "       a.lastArticleId,a.nextArticleId\n" +
+            "from article As a " +
+            "INNER JOIN category c on a.articleType = c.id " +
+            "INNER JOIN tag t on a.articleTags = t.id;")
     List<Article> queryAllInfo();
 
 }

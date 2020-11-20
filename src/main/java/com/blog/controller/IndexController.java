@@ -2,15 +2,13 @@ package com.blog.controller;
 
 import com.blog.entity.Article;
 import com.blog.service.IndexService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,10 +30,10 @@ public class IndexController {
      * @return 返回首页信息
      */
     @GetMapping(value = "/index")
-    public String toIndex(){
+    public String toIndex(Model model){
         List<Article> allInfo = indexService.findAllInfo();
         log.info("logs>>>:" + String.valueOf(allInfo));
-
+        model.addAttribute("allInfo",allInfo);
         return "index";
     }
 
