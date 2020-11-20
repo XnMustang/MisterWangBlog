@@ -33,8 +33,12 @@
             a.publishDate,a.articleContent,a.articleHits,a.articleComment,
             a.articleDigest,a.lastArticleId,a.nextArticleId,c.categoryName,t.tagName
         from article As a
-        INNER JOIN category c on a.categoryId = c.id
-        INNER JOIN tag t on a.tagId = t.id;
+        INNER JOIN
+            category c
+        on a.categoryId = c.id
+        INNER JOIN
+            tag t
+        on a.tagId = t.id;
     </select>
 
 </mapper>

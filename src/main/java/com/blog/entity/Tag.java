@@ -14,7 +14,7 @@ import java.io.Serializable;
 @ToString
 public class Tag implements Serializable {
 
-    private int id;     //主键自增
+    private Integer id;     //主键自增
     private String tagName; //标签名称
 
 }

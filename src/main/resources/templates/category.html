@@ -40,180 +40,48 @@
                 <div class="column-container">
                     <ul class="column_box" id="like-box">
                         <li class="column-title">
-                            <span class="at-sort b-b-ece fl"><a class="at-sort-comment-a c-666 fl">分类</a></span>
+                            <span class="at-sort b-b-ece fl">
+                                <a class="at-sort-comment-a c-666 fl">分类</a>
+                            </span>
                         </li>
-                        <li class="column-category">
-                            <a href="category.html">
-                                教程&nbsp;&nbsp;5&nbsp;篇
-                            </a>
-                        </li>
-                        <li class="column-category">
-                            <a href="category.html">
-                                服务器&nbsp;&nbsp;2&nbsp;篇
-                            </a>
-                        </li>
-                        <li class="column-category">
-                            <a href="category.html">
-                                电脑优化&nbsp;&nbsp;2&nbsp;篇
-                            </a>
-                        </li>
-                        <li class="column-category">
-                            <a href="category.html">
-                                前端&nbsp;&nbsp;2&nbsp;篇
-                            </a>
-                        </li>
-                        <li class="column-category">
-                            <a href="category.html">
-                                后台&nbsp;&nbsp;16&nbsp;篇
-                            </a>
-                        </li>
-                        <li class="column-category">
-                            <a href="category.html">
-                                生活&nbsp;&nbsp;2&nbsp;篇
-                            </a>
-                        </li>
+                        <div th:each="categoryInfo : ${allCategoryInfo}">
+                            <li class="column-category">
+                                <a href="category.html" th:text="${categoryInfo.getCategoryName()}">
+                                    &nbsp;&nbsp;
+                                    <span th:text="${categoryInfo.getCategoryCount()}"></span>
+                                    <span>&nbsp;篇</span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
-
             </div>
 
             <!--左容器-->
             <div class="result-box fl">
                 <!--文章内容-->
-                <div id="article-holder" style="width: 100%; float: left">
+                <div id="article-holder" style="width: 100%; float: left" th:each="info : ${allInfo}">
                     <div class="article-box">
                         <div class="ab-content">
                             <a href="article.html" class="article-img-box">
-                                <img class="lazy-image article-img" data-src="../img/article.jpg" alt="" src="">
+                                <img class="lazy-image article-img" data-src="../img/one.jpg" alt="" src="">
                             </a>
                             <div class="article-title">
-                                <a href="article.html">栈和队列</a>
+                                <a href="article.html" th:text="${info.getArticleTitle()}"></a>
                             </div>
-                            <div class="article-cate"><a href="category.html">后台</a>
-                                <a href="tag.html">C++</a>
+                            <div class="article-cate"><a href="category.html" th:text="${info.getCategory().getCategoryName()}"></a>
+                                <a href="tag.html" th:text="${info.getTag().getTagName()}"></a>
                             </div>
-                            <div class="article-detail-box c-666">
-                                二. 栈和队列
-
-                                1. 栈
-
-                                (1) 概念
-
-                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
-
-                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
-                            </div>
+                            <div class="article-detail-box c-666" th:text="${info.getArticleDigest()}"></div>
                             <span class="article-tail-box">
                                 <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
-                                <span class="read-number c-999 fl">47</span>
+                                   style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
+                                <span class="read-number c-999 fl" th:text="${info.getArticleHits()}"></span>
                                 <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
-                                <span class="comment-number c-999 fl">0</span>
-                                <span class="article-date c-999">2019-12-05</span>
-                                <span class="article-author one-line-overflow c-999">admin</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="article-box">
-                        <div class="ab-content">
-                            <a href="article.html" class="article-img-box">
-                                <img class="lazy-image article-img" data-src="../img/article.jpg" alt="" src="">
-                            </a>
-                            <div class="article-title">
-                                <a href="article.html">栈和队列</a>
-                            </div>
-                            <div class="article-cate"><a href="category.html">后台</a>
-                                <a href="tag.html">C++</a>
-                            </div>
-                            <div class="article-detail-box c-666">
-                                二. 栈和队列
-
-                                1. 栈
-
-                                (1) 概念
-
-                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
-
-                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
-                            </div>
-                            <span class="article-tail-box">
-                                <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
-                                <span class="read-number c-999 fl">47</span>
-                                <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
-                                <span class="comment-number c-999 fl">0</span>
-                                <span class="article-date c-999">2019-12-05</span>
-                                <span class="article-author one-line-overflow c-999">admin</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="article-box">
-                        <div class="ab-content">
-                            <a href="article.html" class="article-img-box">
-                                <img class="lazy-image article-img" data-src="../img/article.jpg" alt="" src="">
-                            </a>
-                            <div class="article-title">
-                                <a href="article.html">栈和队列</a>
-                            </div>
-                            <div class="article-cate"><a href="category.html">后台</a>
-                                <a href="tag.html">C++</a>
-                            </div>
-                            <div class="article-detail-box c-666">
-                                二. 栈和队列
-
-                                1. 栈
-
-                                (1) 概念
-
-                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
-
-                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
-                            </div>
-                            <span class="article-tail-box">
-                                <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
-                                <span class="read-number c-999 fl">47</span>
-                                <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
-                                <span class="comment-number c-999 fl">0</span>
-                                <span class="article-date c-999">2019-12-05</span>
-                                <span class="article-author one-line-overflow c-999">admin</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="article-box">
-                        <div class="ab-content">
-                            <a href="article.html" class="article-img-box">
-                                <img class="lazy-image article-img" data-src="../img/article.jpg" alt="" src="">
-                            </a>
-                            <div class="article-title">
-                                <a href="article.html">栈和队列</a>
-                            </div>
-                            <div class="article-cate"><a href="category.html">后台</a>
-                                <a href="tag.html">C++</a>
-                            </div>
-                            <div class="article-detail-box c-666">
-                                二. 栈和队列
-
-                                1. 栈
-
-                                (1) 概念
-
-                                栈只能在一端进行插入或者删除操作，插入元素称为入栈，删除元素称为出栈。
-
-                                在存储结构上分为顺序栈和链栈。主要特点是先进后出（FI
-                            </div>
-                            <span class="article-tail-box">
-                                <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/read-index.svg')"></i>
-                                <span class="read-number c-999 fl">47</span>
-                                <i class="fl"
-                                    style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
-                                <span class="comment-number c-999 fl">0</span>
-                                <span class="article-date c-999">2019-12-05</span>
-                                <span class="article-author one-line-overflow c-999">admin</span>
+                                   style="background-image: url('https://zhaoyangkun.gitee.io/blog-static/img/comment-index.svg')"></i>
+                                <span class="comment-number c-999 fl" th:text="${info.getArticleComment()}"></span>
+                                <span class="article-date c-999" th:text="${info.getPublishDate()}"></span>
+                                <span class="article-author one-line-overflow c-999" th:text="${info.getAuthor()}"></span>
                             </span>
                         </div>
                     </div>
