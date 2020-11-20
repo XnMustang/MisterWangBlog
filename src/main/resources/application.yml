@@ -85,3 +85,7 @@ pagehelper:
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.blog.entity
+
+logging:
+  level:
+    com.blog.mapper: debug

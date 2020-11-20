@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ public class IndexController {
     public String toIndex(Model model){
         List<Article> allInfo = indexService.findAllInfo();
         log.info("logs>>>:" + String.valueOf(allInfo));
+        for (Article article : allInfo) {
+            System.out.println(article);
+        }
         model.addAttribute("allInfo",allInfo);
         return "index";
     }

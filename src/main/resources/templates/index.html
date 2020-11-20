@@ -47,8 +47,8 @@
                             <div class="article-title">
                                 <a href="article.html" th:text="${info.getArticleTitle()}"></a>
                             </div>
-                            <div class="article-cate"><a href="category.html" th:text="${info.getArticleType()}">后台</a>
-                                <a href="tag.html" th:text="${info.getArticleTags()}"></a>
+                            <div class="article-cate"><a href="category.html" th:text="${info.getCategory().getCategoryName()}"></a>
+                                <a href="tag.html" th:text="${info.getTag().getTagName()}"></a>
                             </div>
                             <div class="article-detail-box c-666" th:text="${info.getArticleDigest()}"></div>
                             <span class="article-tail-box">

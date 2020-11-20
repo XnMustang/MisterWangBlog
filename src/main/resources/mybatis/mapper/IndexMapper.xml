@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.mapper.IndexMapper">
+
+    <resultMap id="indexMap" type="com.blog.entity.Article">
+        <id property="id" column="id"/>
+        <result property="articleId" column="articleId"/>
+        <result property="articleTitle" column="articleTitle"/>
+        <result property="categoryId" column="categoryId"/>
+        <result property="tagId" column="tagId"/>
+        <result property="author" column="author"/>
+        <result property="publishDate" column="publishDate"/>
+        <result property="articleContent" column="articleContent"/>
+        <result property="articleHits" column="articleHits"/>
+        <result property="articleComment" column="articleComment"/>
+        <result property="articleDigest" column="articleDigest"/>
+        <result property="lastArticleId" column="lastArticleId"/>
+        <result property="nextArticleId" column="nextArticleId"/>
+        <association property="category" column="categoryId" javaType="com.blog.entity.Category">
+            <id property="id" column="id"/>
+            <result property="categoryName" column="categoryName"/>
+        </association>
+        <association property="tag" column="tagId" javaType="com.blog.entity.Tag">
+            <id property="id" column="id"/>
+            <result property="tagName" column="tagName"/>
+        </association>
+    </resultMap>
+    <select id="queryAllInfo" resultMap="indexMap">
+        select
+            a.id,a.articleId,a.articleTitle,a.categoryId,a.tagId,a.author,
+            a.publishDate,a.articleContent,a.articleHits,a.articleComment,
+            a.articleDigest,a.lastArticleId,a.nextArticleId,c.categoryName,t.tagName
+        from article As a
+        INNER JOIN category c on a.categoryId = c.id
+        INNER JOIN tag t on a.tagId = t.id;
+    </select>
+
+</mapper>
