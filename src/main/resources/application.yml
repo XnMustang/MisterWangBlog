@@ -11,8 +11,8 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://182.92.220.1:3306/mister_wang_blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://182.92.220.1:3306/mister_wang_blog?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     # 初始化大小，最小，最大
     initial-size: 5
