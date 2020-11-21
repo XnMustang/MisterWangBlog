@@ -4,8 +4,27 @@
 
 <mapper namespace="com.blog.mapper.TagMapper">
 
-    <select id="queryAll" resultType="com.blog.entity.Tag">
-        select t.id,t.tagName,a.articleTitle from article a,tag t where a.tagId = t.id;
+
+    <select id="queryAllTag" resultType="com.blog.entity.Tag">
+        select t.id,t.tagName,count(a.tagId) tagCount
+        from
+        article a,
+        tag t
+        where a.tagId = t.id GROUP BY a.tagId;
     </select>
 
+    <select id="queryTagArticle" resultMap="com.blog.mapper.IndexMapper.indexMap" parameterType="integer">
+        select
+		a.id,a.articleId,a.articleTitle,a.categoryId,a.tagId,a.author,
+		a.publishDate,a.articleContent,a.articleHits,a.articleComment,
+		a.articleDigest,a.lastArticleId,a.nextArticleId,c.categoryName,t.tagName
+        from article a
+        INNER JOIN
+                category c
+        on a.categoryId = c.id
+        INNER JOIN
+                tag t
+        on a.tagId = t.id
+        and a.tagId = #{id};
+    </select>
 </mapper>

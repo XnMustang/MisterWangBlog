@@ -1,5 +1,6 @@
 package com.blog.service.impl;
 
+import com.blog.entity.Article;
 import com.blog.entity.Tag;
 import com.blog.mapper.TagMapper;
 import com.blog.service.TagService;
@@ -21,6 +22,11 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public List<Tag> findAllTag() {
-        return tagMapper.queryAll();
+        return tagMapper.queryAllTag();
+    }
+
+    @Override
+    public List<Article> findTagArticle(Integer id) {
+        return tagMapper.queryTagArticle(id);
     }
 }

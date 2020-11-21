@@ -14,7 +14,7 @@ import java.io.Serializable;
 @ToString
 public class Category implements Serializable {
 
-    private int id;     //主键自增
+    private Integer id;     //主键自增
     private String categoryName;    //分类类名
     private Integer categoryCount;  //统计
 

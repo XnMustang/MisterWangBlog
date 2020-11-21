@@ -1,5 +1,6 @@
 package com.blog.mapper;
 
+import com.blog.entity.Article;
 import com.blog.entity.Tag;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,7 @@ import java.util.List;
 @Repository
 public interface TagMapper {
 
-    List<Tag> queryAll();
+    List<Tag> queryAllTag();
+
+    List<Article> queryTagArticle(Integer id);
 }

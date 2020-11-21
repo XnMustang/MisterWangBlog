@@ -1,6 +1,5 @@
 package com.blog.controller;
 
-import com.blog.entity.Archive;
 import com.blog.entity.Article;
 import com.blog.entity.Category;
 import com.blog.service.CategoryService;

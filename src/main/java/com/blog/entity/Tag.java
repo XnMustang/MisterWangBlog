@@ -16,6 +16,6 @@ public class Tag implements Serializable {
 
     private Integer id;     //主键自增
     private String tagName; //标签名称
-    private String articleTitle;
+    private String tagCount; //统计
 
 }
