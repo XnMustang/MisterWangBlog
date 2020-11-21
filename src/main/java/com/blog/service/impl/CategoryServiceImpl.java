@@ -1,5 +1,7 @@
 package com.blog.service.impl;
 
+import com.blog.entity.Archive;
+import com.blog.entity.Article;
 import com.blog.entity.Category;
 import com.blog.mapper.CategoryMapper;
 import com.blog.service.CategoryService;
@@ -22,5 +24,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> findAllCategoryInfo() {
         return categoryMapper.queryCategoryAllInfo();
+    }
+
+    @Override
+    public List<Article> findCategoryArticle(Integer id) {
+        return categoryMapper.queryCategoryArticle(id);
     }
 }

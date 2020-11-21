@@ -1,24 +1,20 @@
 package com.blog.mapper;
 
 import com.blog.entity.Archive;
-import com.blog.entity.Article;
-import com.blog.entity.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: 归档dao
  * @Author : 王俊
  * @date :  2020/11/20
  */
 @Mapper
 @Repository
-public interface CategoryMapper {
+public interface ArchiveMapper {
 
-    List<Category> queryCategoryAllInfo();
+    List<Archive> queryAllArchive();
 
-
-    List<Article> queryCategoryArticle(Integer id);
 }

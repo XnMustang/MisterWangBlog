@@ -45,12 +45,9 @@
                             </span>
                         </li>
                         <div th:each="categoryInfo : ${allCategoryInfo}">
+                            <input type="hidden" th:value="${categoryInfo.getId()}">
                             <li class="column-category">
-                                <a href="category.html" th:text="${categoryInfo.getCategoryName()}">
-                                    &nbsp;&nbsp;
-                                    <span th:text="${categoryInfo.getCategoryCount()}"></span>
-                                    <span>&nbsp;篇</span>
-                                </a>
+                                <a th:href="@{/category/categoryArticle(id=${categoryInfo.getId()})}" th:text="${categoryInfo.getCategoryName()} + '&nbsp;&nbsp;' + ${categoryInfo.getCategoryCount() + '&nbsp;篇'}"></a>
                             </li>
                         </div>
                     </ul>

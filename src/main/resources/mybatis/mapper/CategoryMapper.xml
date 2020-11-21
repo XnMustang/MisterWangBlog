@@ -6,7 +6,7 @@
 
     <select id="queryCategoryAllInfo" resultType="com.blog.entity.Category">
         select
-            c.id,c.categoryName,count(a.categoryId)
+            c.id,c.categoryName,count(a.categoryId) as categoryCount
         from
             article As a
         INNER JOIN
@@ -15,6 +15,21 @@
             a.categoryId = c.id
         GROUP BY
             a.categoryId;
+    </select>
+
+    <select id="queryCategoryArticle" resultMap="com.blog.mapper.IndexMapper.indexMap" parameterType="integer">
+        select
+            a.id,a.articleId,a.articleTitle,a.categoryId,a.tagId,a.author,
+            a.publishDate,a.articleContent,a.articleHits,a.articleComment,
+            a.articleDigest,a.lastArticleId,a.nextArticleId,c.categoryName,t.tagName
+        from article As a
+        INNER JOIN
+            category c
+        on a.categoryId = c.id
+        INNER JOIN
+            tag t
+        on a.tagId = t.id
+        and c.id = #{id};
     </select>
 
 </mapper>
