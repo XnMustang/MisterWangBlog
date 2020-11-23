@@ -5,7 +5,14 @@
 <mapper namespace="com.blog.mapper.ArchiveMapper">
 
     <select id="queryAllArchive" resultType="com.blog.entity.Archive">
-
+        SELECT
+            YEAR(article.publishDate)AS `year`,
+            DATE_FORMAT(publishDate,'%m') AS `month`,
+            DATE_FORMAT(publishDate,'%d') AS `day`,
+            article.articleTitle,
+            article.articleId
+        FROM article
+            ORDER BY publishDate DESC;
     </select>
 
 </mapper>
