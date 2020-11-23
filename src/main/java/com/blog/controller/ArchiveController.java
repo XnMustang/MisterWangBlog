@@ -2,6 +2,7 @@ package com.blog.controller;
 
 import com.blog.entity.Archive;
 import com.blog.service.ArchiveService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,48 +22,39 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/archive")
+@Slf4j
 public class ArchiveController {
 
     @Autowired
     private ArchiveService archiveService;
 
     @GetMapping("/archive")
-    @ResponseBody
-    public void toArchive(Model model){
+    public String toArchive(Model model){
         List<Archive> allArchive = archiveService.findAllArchive();
-        Map<String,List<Archive>> map = new HashMap<>();
-        String archiveTime = null;
-        //key存储的是年月份，如果重复就让该key的value中再存储一条archive
+        Map<String,Integer> map = new HashMap<>();
+        String archiveTime = "";  //拼接年份和月份
+        int countArchive = 1;
+        log.info("打印归档查询信息：");
         for (Archive archive : allArchive) {
-            archiveTime = archive.getYear()+"年"+archive.getMonth()+"月";
-            map.put(archiveTime, (List<Archive>) archive);
-        }
-
-
-        List<String> timeList = new ArrayList<>();
-        model.addAttribute("allArchive",allArchive);
-        String yearMonth = null;
-        for (Archive archive : allArchive) {
-            //year=2019, month=10, day=03, articleTitle=Java基础总结, articleId=1002
-            /**
-             * 2019年 12月 3 篇
-             *      12-05栈和队列
-             *      12-15图解数据结构
-             *      12-28算法入门
-             */
-            yearMonth = archive.getYear() +"年"+ archive.getMonth()+"月";
-            for (String time : timeList) {
-                if(yearMonth.equals(time)){
-
-                }
+            log.info(archive.toString());
+            archiveTime = archive.getYear() + "年" +archive.getMonth() + "月";
+            //判断是否存在这个年月份，如果存在，就让这个年月份+1，用来统计月份文章数
+            if(map.containsKey(archiveTime)){
+                log.debug("已经存在这个key");
+                countArchive = countArchive + 1;
+                map.put(archiveTime,countArchive);
+                log.info("存在key，存储完成！");
+            }else {
+                log.info("还没有存在这个key：" + archiveTime);
+                map.put(archiveTime,countArchive);
             }
-            timeList.add(yearMonth);
-
-            System.out.println(archive);
         }
-        for (String s : timeList) {
-            System.out.println(s);
+        for(Map.Entry<String, Integer> m : map.entrySet()){
+            System.out.println("key:" + m.getKey() + ",value:" + m.getValue());
         }
+        model.addAttribute("allArchive",allArchive);
+        model.addAttribute("map",map);
+        return "archive";
     }
 
 }

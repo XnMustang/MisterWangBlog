@@ -35,22 +35,30 @@
     <main class="big-container">
         <article class="article">
             <ul class="achieve-box">
-                <li class="year">
-                    2019年 12月
-                    <span style="color: #3aa4ff">3</span> 篇
-                </li>
-                <li class="detail-item">
-                    <span class="date">12-05</span>
-                    <a href="article.html" class="title">栈和队列</a>
-                </li>
-                <li class="detail-item">
-                    <span class="date">12-15</span>
-                    <a href="article.html" class="title">图解数据结构</a>
-                </li>
-                <li class="detail-item">
-                    <span class="date">12-28</span>
-                    <a href="article.html" class="title">算法入门</a>
-                </li>
+                <div th:each="archiveMap : ${map}">
+                    <li class="year" th:text="${archiveMap.key} + '&nbsp;' + ${archiveMap.value} + '&nbsp;篇'">
+<!--                        2019年 12月-->
+<!--                        <span style="color: #3aa4ff">3</span> 篇-->
+<!--                        <span style="color: #3aa4ff" th:text="${archiveMap.value}"></span> 篇-->
+                    </li>
+                    <li class="detail-item" th:each="archive : ${allArchive}">
+                        <span class="date" th:text="${archive.getMonth()+'-'+archive.getDay()}"></span>
+                        <a href="article.html" class="title" th:text="${archive.getArticleTitle()}"></a>
+                    </li>
+<!--                    <li class="detail-item">-->
+<!--                        <span class="date">12-05</span>-->
+<!--                        <a href="article.html" class="title">栈和队列</a>-->
+<!--                    </li>-->
+                </div>
+
+<!--                <li class="detail-item">-->
+<!--                    <span class="date">12-15</span>-->
+<!--                    <a href="article.html" class="title">图解数据结构</a>-->
+<!--                </li>-->
+<!--                <li class="detail-item">-->
+<!--                    <span class="date">12-28</span>-->
+<!--                    <a href="article.html" class="title">算法入门</a>-->
+<!--                </li>-->
             </ul>
         </article>
     </main>
