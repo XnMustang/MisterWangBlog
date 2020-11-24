@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,8 +31,11 @@ public class IndexController {
      * @return 返回首页信息
      */
     @GetMapping(value = "/index")
-    public String toIndex(Model model){
-        List<Article> allInfo = indexService.findAllInfo();
+    public String toIndex(
+            @RequestParam(value = "startPage",defaultValue = "0",required = false) Integer startPage,
+            @RequestParam(value = "pageSize",defaultValue = "5",required = false) Integer pageSize,
+            Model model){
+        List<Article> allInfo = indexService.findAllInfo(startPage,pageSize);
         log.info("logs>>>:" + String.valueOf(allInfo));
         for (Article article : allInfo) {
             System.out.println(article);

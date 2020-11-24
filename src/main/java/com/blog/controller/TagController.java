@@ -36,9 +36,11 @@ public class TagController {
      * 查询标签墙左侧标签展示，并统计
      */
     @GetMapping("/tag")
-    public String toTag(Model model){
+    public String toTag(@RequestParam(value = "startPage",defaultValue = "0",required = false) Integer startPage,
+                        @RequestParam(value = "pageSize",defaultValue = "5",required = false) Integer pageSize,
+                        Model model){
         List<Tag> tagList = tagService.findAllTag();
-        List<Article> allInfo = indexService.findAllInfo();
+        List<Article> allInfo = indexService.findAllInfo(startPage,pageSize);
         for (Article article : allInfo) {
             System.out.println(article);
         }

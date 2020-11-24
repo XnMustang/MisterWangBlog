@@ -38,7 +38,8 @@
         on a.categoryId = c.id
         INNER JOIN
             tag t
-        on a.tagId = t.id;
+        on a.tagId = t.id
+				LIMIT #{startPage},#{pageSize};
     </select>
 
 </mapper>

@@ -16,6 +16,6 @@ public interface IndexService {
      * 查询首页所有信息
      * @return
      */
-    List<Article> findAllInfo();
+    List<Article> findAllInfo(Integer startPage,Integer pageSize);
 
 }

@@ -16,6 +16,6 @@ import java.util.List;
 @Repository
 public interface IndexMapper {
 
-    List<Article> queryAllInfo();
+    List<Article> queryAllInfo(@Param("startPage") Integer startPage,@Param("pageSize") Integer pageSize);
 
 }

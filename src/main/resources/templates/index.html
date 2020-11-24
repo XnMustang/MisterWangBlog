@@ -47,8 +47,9 @@
                             <div class="article-title">
                                 <a href="article.html" th:text="${info.getArticleTitle()}"></a>
                             </div>
-                            <div class="article-cate"><a href="category.html" th:text="${info.getCategory().getCategoryName()}"></a>
-                                <a href="tag.html" th:text="${info.getTag().getTagName()}"></a>
+                            <div class="article-cate">
+                                <a href="category.html" th:href="@{/category/categoryArticle(id=${info.getCategoryId()})}" th:text="${info.getCategory().getCategoryName()}"></a>
+                                <a href="tag.html" th:href="@{/tag/tagArticle(id=${info.getTagId()})}" th:text="${info.getTag().getTagName()}"></a>
                             </div>
                             <div class="article-detail-box c-666" th:text="${info.getArticleDigest()}"></div>
                             <span class="article-tail-box">
@@ -65,7 +66,9 @@
                     </div>
                 </div>
                 <!--分页指示器-->
-                <div id="pagination" class="pagination fl"></div>
+                <div id="pagination" class="pagination fl">
+
+                </div>
             </div>
 
             <!--右容器-->
@@ -165,11 +168,11 @@
             id: 'pagination',
             curPage: 1, //初始页码
             pageTotal: 3, //总页数
-            pageAmount: 10, //每页多少条
+            pageAmount: 5, //每页多少条
             dataTotal: 29, //总共多少条数据
-            pageSize: 3, //可选,分页个数
-            //showPageTotalFlag: true, //是否显示数据统计
-            //showSkipInputFlag: true, //是否支持跳转
+            pageSize: 5, //可选,分页个数
+            showPageTotalFlag: true, //是否显示数据统计
+            showSkipInputFlag: true, //是否支持跳转
             getPage: function (page) {
                 console.log("current page: ", page);
             }

@@ -21,7 +21,7 @@ public class IndexServiceImpl implements IndexService {
     private IndexMapper indexMapper;
 
     @Override
-    public List<Article> findAllInfo() {
-        return indexMapper.queryAllInfo();
+    public List<Article> findAllInfo(Integer startPage,Integer pageSize) {
+        return indexMapper.queryAllInfo(startPage,pageSize);
     }
 }

@@ -33,8 +33,10 @@ public class CategoryController {
      * @return
      */
     @GetMapping("/category")
-    public String toCategory(Model model){
-        List<Article> allInfo = indexService.findAllInfo();
+    public String toCategory(@RequestParam(value = "startPage",defaultValue = "0",required = false) Integer startPage,
+                             @RequestParam(value = "pageSize",defaultValue = "5",required = false) Integer pageSize,
+                             Model model){
+        List<Article> allInfo = indexService.findAllInfo(startPage,pageSize);
         List<Category> allCategoryInfo = categoryService.findAllCategoryInfo();
         for (Category category : allCategoryInfo) {
             System.out.println(category);
