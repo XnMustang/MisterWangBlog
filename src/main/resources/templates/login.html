@@ -26,7 +26,8 @@
                 <input type="hidden" name="csrfmiddlewaretoken"
                     value="ATVqa3VWx0vdl5KGcfhDx3l3EjAmcluacR4lCLph0eUZzj8H74pC4Gpm8gbXF0iF">
                 <div class="auth-inp">
-                    <div id="icon-box"><a onclick="github_login()" class="git-icon" href="javascript:void(0);"></a>
+                    <div id="icon-box">
+                        <a onclick="github_login()" class="git-icon" href="javascript:void(0);"></a>
                     </div>
                     <div class="tips">
                         <p class="fl">Github授权登录</p>
@@ -42,12 +43,20 @@
                             name="user_name" placeholder="用户名或者邮箱" />
                     </label>
                 </div>
-                <div class="inp"><label><input class="inp-input" data-block="true" type="password" data-required="请输入密码"
-                            id="pwd" name="pwd" placeholder="密码" /></label>
+                <div class="inp">
+                    <label>
+                        <input class="inp-input" data-block="true" type="password" data-required="请输入密码"
+                            id="pwd" name="pwd" placeholder="密码" />
+                    </label>
                 </div>
-                <div class="inp"><label><input class="inp-input" data-block="true" type="text" id="code" name="code"
-                            data-required="请输入验证码" placeholder="输入验证码" /></label></div>
-                <div class="code-box" style="cursor: pointer;"><img id="code_img" src="../img/verify-code.png" alt="" />
+                <div class="inp">
+                    <label>
+                        <input class="inp-input" data-block="true" type="text" id="code" name="code"
+                            data-required="请输入验证码" placeholder="输入验证码" />
+                    </label>
+                </div>
+                <div class="code-box" style="cursor: pointer;">
+                    <img id="code_img" src="../img/verify-code.png" alt="" />
                 </div>
                 <button id="login" type="submit" class="login">登录</button>
                 <div id="bottom">

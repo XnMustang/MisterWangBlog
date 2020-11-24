@@ -75,6 +75,20 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 100MB
+  # 注册时发送邮件
+  mail:
+    # 服务器地址
+    host: smtp.163.com
+    # 发送邮箱名称
+    username: forward_xn@163.com
+    # 发送邮箱授权密码
+    password: BRMUMMNCZRZPUZEK
+    # 发送邮箱端口
+    port: 465
+    # 发送协议
+    protocol: smtps
+    # 默认编码
+    default-encoding: UTF-8
 
 pagehelper:
   helperDialect: mysql

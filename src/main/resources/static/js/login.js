@@ -44,8 +44,12 @@ function toRegis() {
 }
 
 function send_email() {
-    let reg = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/; //正则表达式
+    //验证邮箱的正则表达式
+    let reg = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/;
+    //用户注册的邮箱信息
     let to_email = $("#email_r").val();
+
+    //对邮箱格式做验证
     if (!reg.test(to_email)) {
         swal({
             text: "请输入格式正确的邮箱",
@@ -55,11 +59,14 @@ function send_email() {
         return;
     }
     $.ajax({
-        url: "/front/send_email",
+        url: "/register/userRegisterToEmail",
         type: "GET",
-        data: {"to_email": to_email},
+        data: {
+            "to_email": to_email
+        },
         datatype: "json",
         success: function (data) {
+            console.log("返回数据："+data)
             if (data.code === 1) {
                 swal({
                     text: data.msg,
