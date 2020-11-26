@@ -18,8 +18,8 @@
 <body>
     <div class="main">
         <div class="form">
-            <a class="on" id="landing" href="javascript:void(0);">登录</a>
-            <a class="not-on" id="registered" href="javascript:void(0);">注册</a>
+            <a class="on" id="landing" href="javascript:void(0);" th:href="@{/login}">登录</a>
+            <a class="not-on" id="registered" href="javascript:void(0);" th:href="@{/register/}">注册</a>
             <div class="fix"></div>
 
             <form type="POST" action="" id="landing-content" data-form="ajax">

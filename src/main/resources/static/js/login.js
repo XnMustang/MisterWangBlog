@@ -67,6 +67,8 @@ function send_email() {
         datatype: "json",
         success: function (data) {
             console.log("返回数据："+data)
+            console.log(data.msg);
+            console.log(data.code);
             if (data.code === 1) {
                 swal({
                     text: data.msg,
