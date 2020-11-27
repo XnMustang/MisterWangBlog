@@ -30,7 +30,8 @@ function toLogin() {
     // $("#landing").addClass("on");
     // $("#landing-content").show(500);
     // $("#registered-content").hide(500);
-    window.location.href = 'login.html';
+
+    window.location.href = "http://localhost:8081/login";
 }
 
 //切换至注册窗口
@@ -40,7 +41,7 @@ function toRegis() {
     // $("#landing-content").hide(500);
     // $("#registered").addClass("on");
     // $("#registered-content").show(500);
-    window.location.href = 'register.html';
+    window.location.href = 'http://localhost:8081/register/';
 }
 
 function send_email() {

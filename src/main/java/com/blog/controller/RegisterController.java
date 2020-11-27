@@ -51,7 +51,8 @@ public class RegisterController {
     }
 
     @RequestMapping("/register")
-    public String register(String username,String password,String ackPassword,String email,Integer emailCode){
+    @ResponseBody
+    public BaseResponse register(String username,String password,String ackPassword,String email,Integer emailCode){
         log.info("用户名：" + username + ",密码：" + password +",确认密码：" + ackPassword+",邮箱：" + email+",验证码：" + emailCode);
         /**
          * 判断用户注册时输入的验证码和邮件发送的验证码是否一致
@@ -61,7 +62,9 @@ public class RegisterController {
         }else {
             log.info("验证码错误！");
         }
-        return "login";
+        BaseResponse baseResponse = new BaseResponse(StatusCode.Success);
+        System.out.println(baseResponse.getCode());
+        return baseResponse;
     }
 
 }

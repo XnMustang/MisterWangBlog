@@ -91,6 +91,7 @@
         const verJs_reg = new VerJs({
             form: "#registered-content",
             success: function (data) {
+                console.log("data:" + data);
                 data = JSON.parse(data);
                 if (data.code === 1) {
                     swal({
