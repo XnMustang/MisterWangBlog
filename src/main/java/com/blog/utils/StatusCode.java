@@ -8,7 +8,7 @@ package com.blog.utils;
 public enum StatusCode {
 
     Success(1,"成功"),
-    Fail(-1,"失败"),
+    Fail(0,"失败"),
     NutFound(10010,"不存在"),
     Entity_Not_Exist(10011,"实体信息不存在"),
     Invalid_Params(10012,"请求参数不合法!");

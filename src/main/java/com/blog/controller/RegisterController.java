@@ -54,16 +54,17 @@ public class RegisterController {
     @ResponseBody
     public BaseResponse register(String username,String password,String ackPassword,String email,Integer emailCode){
         log.info("用户名：" + username + ",密码：" + password +",确认密码：" + ackPassword+",邮箱：" + email+",验证码：" + emailCode);
+        BaseResponse baseResponse = null;
         /**
          * 判断用户注册时输入的验证码和邮件发送的验证码是否一致
          */
         if(emailCode.equals(oldEmailCode)){
             log.info("验证码正确！");
+            baseResponse = new BaseResponse(StatusCode.Success);
         }else {
             log.info("验证码错误！");
+            baseResponse = new BaseResponse(StatusCode.Fail);
         }
-        BaseResponse baseResponse = new BaseResponse(StatusCode.Success);
-        System.out.println(baseResponse.getCode());
         return baseResponse;
     }
 

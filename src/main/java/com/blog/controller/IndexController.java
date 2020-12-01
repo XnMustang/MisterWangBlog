@@ -30,7 +30,7 @@ public class IndexController {
      * 查询首页所有信息展示：文章、个人介绍、猜你喜欢、点击排行
      * @return 返回首页信息
      */
-    @GetMapping(value = "/index")
+    @RequestMapping(value = "/index")
     public String toIndex(
             @RequestParam(value = "startPage",defaultValue = "0",required = false) Integer startPage,
             @RequestParam(value = "pageSize",defaultValue = "5",required = false) Integer pageSize,
